@@ -403,5 +403,90 @@ function App() {
 export default App
 
 ```
+# Prop Drilling
+Prop drilling refers to passing props down multiple levels of components, often leading to complex and less maintainable code. It can be a challenge in large applications.
 
+Example:
 
+```javascipt
+const ComponentC = ({ user }) => <div>User: {user}</div>;
+
+const ComponentB = ({ user }) => <ComponentC user={user} />;
+
+const ComponentA = ({ user }) => <ComponentB user={user} />;
+
+function App() {
+    const user = "Aditya";
+    return (
+        <>
+            <ComponentA user={user} />
+        </>
+    );
+}
+
+export default App;
+```
+
+# useContext Hook
+The useContext() hook provides a way to pass data through the component tree without having to pass props manually at every level.
+
+Example:
+
+```javascript
+import React, { useContext } from "react";
+
+const UserContext = React.createContext();
+
+const ComponentC = () => {
+    const user = useContext(UserContext);
+    return <div>User: {user}</div>;
+};
+
+const ComponentB = () => <ComponentC />;
+
+const ComponentA = () => <ComponentB />;
+
+function App() {
+    const user = "Aditya";
+    return (
+        <UserContext.Provider value={user}>
+            <ComponentA />
+        </UserContext.Provider>
+    );
+}
+
+export default App;
+```
+
+# useRef Hook
+The useRef() hook is useful for accessing and manipulating DOM elements directly. It can also be used to store mutable values that persist across renders without triggering a re-render.
+
+Example:
+```javascript
+import React, { useRef } from "react";
+
+const InputFocus = () => {
+    const inputRef = useRef(null);
+
+    const handleFocus = () => {
+        inputRef.current.focus();
+    };
+
+    return (
+        <>
+            <input ref={inputRef} type="text" />
+            <button onClick={handleFocus}>Focus Input</button>
+        </>
+    );
+};
+
+function App() {
+    return (
+        <>
+            <InputFocus />
+        </>
+    );
+}
+
+export default App;
+```
