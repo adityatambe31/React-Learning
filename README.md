@@ -21,11 +21,9 @@ This document is a comprehensive guide to essential ReactJS concepts, complete w
 - [useRef Hook](#useref-hook)
 - [Component Life Cycle](#component-life-cycle)
 
-## 📜 Components
+# 📜 Components
 
 React components are the building blocks of a React application. They can be functional or class-based, each serving different purposes. Functional components are typically used for UI rendering and stateless operations, while class-based components are used for managing state and lifecycle methods.
-
-### Example:
 
 ```jsx
 function Welcome(props) {
