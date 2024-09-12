@@ -195,7 +195,4 @@ class MyComponent extends React.Component {
 }
 ```
 
-# 📚 Additional Resources
-This is Advance concept of hooks that I used for my project. You can view the detailed notes [here](./4. Adv Concept of React/notes.md).
-
 
